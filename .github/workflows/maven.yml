@@ -18,7 +18,9 @@ jobs:
   setup:
     runs-on: ubuntu-latest
     steps:
-
+      - name: Code Checkout
+        uses: actions/checkout@v3
+        
       # Step 1: Download and run the installation script
       - name: Install DOX CLI
         run: |
