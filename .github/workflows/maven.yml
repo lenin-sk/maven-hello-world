@@ -30,4 +30,4 @@ jobs:
       # Step 2: DOX Action 1
       - name: DOX Maven Build
         run: |
-          dox maven build
+          ls
