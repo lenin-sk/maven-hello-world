@@ -1,0 +1,33 @@
+name: Maven Build
+on:
+  # push:
+  #   branches:
+  #     - main
+  #     - release/*
+  #   paths-ignore:
+  #     - ".github/**"
+  #   tags-ignore:
+  #     - "v*"
+  # pull_request:
+  #   branches:
+  #     - main
+  #     - release/*
+  workflow_dispatch:
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+
+      # Step 1: Download and run the installation script
+      - name: Install DOX CLI
+        run: |
+          curl -s -L -o install.sh https://github.com/dopxlab/dox-cli/releases/latest/download/install.sh && bash install.sh
+          cp $HOME/.dox/bin/* /usr/local/bin/
+
+          dox --version  # Verify that DOX CLI is now available
+
+      # Step 2: DOX Action 1
+      - name: DOX Maven Build
+        run: |
+          dox maven build
